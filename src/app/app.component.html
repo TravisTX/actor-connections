@@ -2,10 +2,22 @@
   {{title}}
 </h1>
 
-
-
-
-<div *ngIf="movie">
-  {{movie.title}}
-
+<input type="text" [(ngModel)]="movieSearchA" (change)="searchChange('a', $event)" placeholder="Search..." />
+<div *ngIf="movieResultsA">
+  <ul>
+    <li *ngFor="let movie of movieResultsA">
+      {{ movie.title }}
+    </li>
+  </ul>
 </div>
+
+
+<input type="text" [(ngModel)]="movieSearchB" (change)="searchChange('b', $event)" placeholder="Search..." />
+<div *ngIf="movieResultsB">
+  <ul>
+    <li *ngFor="let movie of movieResultsB">
+      {{ movie.title }}
+    </li>
+  </ul>
+</div>
+

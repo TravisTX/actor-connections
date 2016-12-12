@@ -10,12 +10,19 @@ export class AppComponent implements OnInit {
   constructor(private moviedbService: MoviedbService) { }
   title = 'app works!';
   movie = undefined;
+  movieResultsA = [];
+  movieResultsB = [];
 
   ngOnInit(): void {
-    console.log('init');
-    this.moviedbService.getTestMovie().subscribe(
-      data => this.movie = data.json()
-      
+  }
+
+  searchChange(movieSlot, event): void {
+    var target = (movieSlot === 'a') ? this.movieResultsA : this.movieResultsB;
+    this.moviedbService.searchForMovie(event.target.value).subscribe(
+      data => {
+        target.length = 0;
+        target.push(...data.json().results);
+      }
     )
   }
 
