@@ -1,5 +1,5 @@
 <div>
-  <input type="text" [(ngModel)]="query" (ngModelChange)="searchChange($event)" placeholder="Movie Search..." />
+  <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie Search..." />
   <div *ngIf="movieSearchResults.length > 0 || tvSearchResults.length > 0" class="auto-complete-results">
     <ul>
       <li *ngFor="let item of movieSearchResults" (click)="selectItem(item)">
