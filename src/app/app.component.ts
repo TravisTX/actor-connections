@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviedbService } from './moviedb.service';
+import { MovieSelectorComponent } from './movie-selector/movie-selector.component';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,11 @@ import { MoviedbService } from './moviedb.service';
 })
 export class AppComponent implements OnInit {
   constructor(private moviedbService: MoviedbService) { }
-  title = 'app works!';
-  movie = undefined;
-  movieResultsA = [];
-  movieResultsB = [];
+  movieA = undefined;
+  movieB = undefined;
 
   ngOnInit(): void {
   }
 
-  searchChange(movieSlot, event): void {
-    var target = (movieSlot === 'a') ? this.movieResultsA : this.movieResultsB;
-    this.moviedbService.searchForMovie(event.target.value).subscribe(
-      data => {
-        target.length = 0;
-        target.push(...data.json().results);
-      }
-    )
-  }
 
 }

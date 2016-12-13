@@ -1,23 +1,17 @@
-<h1>
-  {{title}}
-</h1>
 
-<input type="text" [(ngModel)]="movieSearchA" (change)="searchChange('a', $event)" placeholder="Search..." />
-<div *ngIf="movieResultsA">
-  <ul>
-    <li *ngFor="let movie of movieResultsA">
-      {{ movie.title }}
-    </li>
-  </ul>
+<div class="comparison">
+  <div class="colA">
+    <movie-selector (onSelected)="movieA = $event"></movie-selector>
+    {{movieA | json}}
+  </div>
+  <div class="colB">
+    Actors in Common
+  </div>
+  <div class="colC">
+    <movie-selector (onSelected)="movieB = $event"></movie-selector>
+    {{movieB | json}}
+  </div>
 </div>
 
 
-<input type="text" [(ngModel)]="movieSearchB" (change)="searchChange('b', $event)" placeholder="Search..." />
-<div *ngIf="movieResultsB">
-  <ul>
-    <li *ngFor="let movie of movieResultsB">
-      {{ movie.title }}
-    </li>
-  </ul>
-</div>
 

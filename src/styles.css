@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #444;
+    color: #eee;
+}
+
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.comparison {
+    display: flex;
+}
+
+.comparison > div {
+    flex-grow: 1;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid white;
+}
+
+.auto-complete-results {
+    position: fixed;
+    width: 200px;
+    background-color: #555;
+}
+
+.auto-complete-results li {
+    padding: 5px;
+    cursor: pointer;
+    overflow-x: hidden;
+}
+
+.auto-complete-results li:hover {
+    background-color: #666;
+}
+

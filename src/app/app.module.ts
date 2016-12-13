@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MoviedbService } from './moviedb.service';
+import { MovieSelectorComponent } from './movie-selector/movie-selector.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MovieSelectorComponent
   ],
   imports: [
     BrowserModule,

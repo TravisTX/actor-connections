@@ -1,0 +1,14 @@
+<div>
+  <input type="text" [(ngModel)]="movieSearch" (ngModelChange)="searchChange($event)" placeholder="Movie Search..." />
+  <div *ngIf="searchResults.length > 0" class="auto-complete-results">
+    <ul>
+      <li *ngFor="let movie of searchResults" (click)="selectMovie(movie)">
+        {{ movie.title }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="movie">
+    {{movie.title}}
+  </div>
+</div>
