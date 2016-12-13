@@ -8,6 +8,7 @@ html {
 body {
     background-color: #444;
     color: #eee;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
 
 ul, ol, li {
@@ -25,22 +26,31 @@ h1 {
     margin: 0;
     font-weight: normal;
 }
+h2 {
+    margin: 0;
+    font-weight: normal;
+}
 
 .comparison {
     display: flex;
+    margin: -5px;
 }
 
 .comparison > div {
     flex-grow: 1;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     width: 33%;
     background-color: #333;
 }
 
+.auto-complete {
+    position: relative;
+}
+
 .auto-complete-results {
-    position: fixed;
-    width: 200px;
+    position: absolute;
+    width: 100%;
     background-color: #555;
 }
 
@@ -52,6 +62,12 @@ h1 {
 
 .auto-complete-results li:hover {
     background-color: #666;
+}
+
+.label {
+    background-color: #111;
+    padding: 2px 5px;
+    border-radius: 5px;
 }
 
 .selected-item {
@@ -70,14 +86,21 @@ h1 {
 
 .person {
     width: 132px;
+    min-height: 170px;
     margin: 5px;
     float: left;
     text-align: center;
 }
 
-.person img {
+.person .image {
     width: 132px;
     height: 132px;
     border-radius: 50%;
     border: 2px solid #eee;
+    overflow: hidden;
+}
+
+.person img {
+    width: 132px;
+    height: 132px;
 }

@@ -1,19 +1,19 @@
 <div>
-  <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie / Tv Search..." />
-  <div *ngIf="movieSearchResults.length > 0 || tvSearchResults.length > 0" class="auto-complete-results">
-    <ul>
-      <li *ngFor="let item of movieSearchResults" (click)="selectItem(item)">
-        {{item.title}} {{item.date}}
-      </li>
-      <li *ngFor="let item of tvSearchResults" (click)="selectItem(item)">
-        {{item.title}} {{item.date}}
-      </li>
-    </ul>
+  <div class="auto-complete">
+    <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie / Tv Search..." />
+    <div *ngIf="movieSearchResults.length > 0 || tvSearchResults.length > 0" class="auto-complete-results">
+      <ul>
+        <li *ngFor="let item of movieSearchResults" (click)="selectItem(item)">
+          {{item.title}} {{item.date}} <span class="label">movie</span>
+        </li>
+        <li *ngFor="let item of tvSearchResults" (click)="selectItem(item)">
+          {{item.title}} {{item.date}} <span class="label">tv</span>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div *ngIf="selectedItem" class="selected-item">
-      <img src="https://image.tmdb.org/t/p/w650_and_h365_bestv2{{selectedItem.backdropPath}}" />
-      {{selectedItem.title}}
-      {{selectedItem.date}}
+    <img src="https://image.tmdb.org/t/p/w650_and_h365_bestv2{{selectedItem.backdropPath}}" /> {{selectedItem.title}} {{selectedItem.date}}
   </div>
 </div>

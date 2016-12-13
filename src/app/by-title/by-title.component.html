@@ -1,3 +1,5 @@
+<h1>Actor Connections</h1>
+
 <div class="comparison">
   <div>
     <movie-selector (onSelected)="selectMovie('a', $event)"></movie-selector>
@@ -8,7 +10,7 @@
     
   </div>
   <div>
-    <h1>Actors in Common</h1>
+    <h2>Actors in Common</h2>
 
     <div *ngFor="let cast of sharedCast">
       <person [person]="cast"></person>
