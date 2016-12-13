@@ -15,4 +15,9 @@ export class MoviedbService {
     return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&include_adult=false`);
   }
 
+  getCredits(movieId: number): any {
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${this.apiKey}`);
+  }
+
+
 }

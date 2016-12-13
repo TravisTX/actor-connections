@@ -13,6 +13,7 @@ export class MovieSelectorComponent implements OnInit {
   movie = undefined;
   @Output()
   onSelected = new EventEmitter<boolean>();
+  movieSearch = '';
   searchResults = [];
 
   ngOnInit() {
@@ -29,6 +30,7 @@ export class MovieSelectorComponent implements OnInit {
   selectMovie(movie): void {
     this.movie = movie;
     this.searchResults.length = 0;
+    this.movieSearch = '';
     this.onSelected.emit(this.movie);
   }
 }

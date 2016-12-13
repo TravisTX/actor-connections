@@ -3,7 +3,7 @@
   <div *ngIf="searchResults.length > 0" class="auto-complete-results">
     <ul>
       <li *ngFor="let movie of searchResults" (click)="selectMovie(movie)">
-        {{ movie.title }}
+        {{ movie.title }} {{movie.release_date}}
       </li>
     </ul>
   </div>
