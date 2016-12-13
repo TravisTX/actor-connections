@@ -10,27 +10,37 @@ export class MovieSelectorComponent implements OnInit {
 
   constructor(private moviedbService: MoviedbService) { }
   @Input()
-  movie = undefined;
+  selectedItem = undefined;
   @Output()
   onSelected = new EventEmitter<boolean>();
-  movieSearch = '';
-  searchResults = [];
+  query = '';
+  movieSearchResults = [];
+  tvSearchResults = [];
 
   ngOnInit() {
   }
 
   searchChange(event): void {
+    if (event.length === 0) {
+      return;
+    }
     this.moviedbService.searchForMovie(event).subscribe(
       data => {
-        this.searchResults = data.json().results;
+        this.movieSearchResults = data;
+      }
+    )
+    this.moviedbService.searchForTv(event).subscribe(
+      data => {
+        this.tvSearchResults = data;
       }
     )
   }
 
-  selectMovie(movie): void {
-    this.movie = movie;
-    this.searchResults.length = 0;
-    this.movieSearch = '';
-    this.onSelected.emit(this.movie);
+  selectItem(item): void {
+    this.selectedItem = item;
+    this.movieSearchResults.length = 0;
+    this.tvSearchResults.length = 0;
+    this.query = '';
+    this.onSelected.emit(item);
   }
 }

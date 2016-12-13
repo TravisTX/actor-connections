@@ -28,7 +28,7 @@ export class ByTitleComponent implements OnInit {
       this.bMovie = movie;
     }
 
-    this.moviedbService.getCredits(movie.id).subscribe(
+    this.moviedbService.getCredits(movie).subscribe(
       data => {
         if (movieSlot === 'a') {
           this.aMovieAllCast = data.json().cast;

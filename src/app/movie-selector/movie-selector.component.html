@@ -1,14 +1,19 @@
 <div>
-  <input type="text" [(ngModel)]="movieSearch" (ngModelChange)="searchChange($event)" placeholder="Movie Search..." />
-  <div *ngIf="searchResults.length > 0" class="auto-complete-results">
+  <input type="text" [(ngModel)]="query" (ngModelChange)="searchChange($event)" placeholder="Movie Search..." />
+  <div *ngIf="movieSearchResults.length > 0 || tvSearchResults.length > 0" class="auto-complete-results">
     <ul>
-      <li *ngFor="let movie of searchResults" (click)="selectMovie(movie)">
-        {{ movie.title }} {{movie.release_date}}
+      <li *ngFor="let item of movieSearchResults" (click)="selectItem(item)">
+        {{item.title}} {{item.date}}
+      </li>
+      <li *ngFor="let item of tvSearchResults" (click)="selectItem(item)">
+        {{item.title}} {{item.date}}
       </li>
     </ul>
   </div>
 
-  <div *ngIf="movie">
-    {{movie.title}}
+  <div *ngIf="selectedItem" class="selected-item">
+      <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{selectedItem.posterPath}}" />
+      {{selectedItem.title}}
+      {{selectedItem.date}}
   </div>
 </div>

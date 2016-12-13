@@ -10,6 +10,11 @@ ul, ol, li {
     list-style-type: none;
 }
 
+input[type=text] {
+    width: 100%;
+    font-size: 1.5em;
+}
+
 .comparison {
     display: flex;
 }
@@ -18,7 +23,8 @@ ul, ol, li {
     flex-grow: 1;
     padding: 10px;
     margin: 10px;
-    border: 1px solid white;
+    width: 33%;
+    border: 1px solid #eee;
 }
 
 .auto-complete-results {
@@ -37,3 +43,19 @@ ul, ol, li {
     background-color: #666;
 }
 
+.selected-item {
+    background-color: #111;
+    padding: 10px;
+    font-weight: bold;
+    max-width: 300px;
+    margin: 5px auto;
+}
+
+.selected-item img {
+    display: block;
+    max-width: 100%;
+    border: 2px solid #eee;
+    margin-bottom: 5px;
+    
+
+}
