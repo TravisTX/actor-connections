@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MoviedbService } from './moviedb.service';
 import { MovieSelectorComponent } from './movie-selector/movie-selector.component';
+import { ByTitleComponent } from './by-title/by-title.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieSelectorComponent
+    MovieSelectorComponent,
+    ByTitleComponent
   ],
   imports: [
     BrowserModule,

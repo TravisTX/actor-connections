@@ -1,0 +1,13 @@
+<div class="comparison">
+  <div class="colA">
+    <movie-selector (onSelected)="movieA = $event"></movie-selector>
+    {{movieA | json}}
+  </div>
+  <div class="colB">
+    Actors in Common
+  </div>
+  <div class="colC">
+    <movie-selector (onSelected)="movieB = $event"></movie-selector>
+    {{movieB | json}}
+  </div>
+</div>
