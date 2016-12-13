@@ -1,5 +1,5 @@
 <div>
-  <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie Search..." />
+  <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie / Tv Search..." />
   <div *ngIf="movieSearchResults.length > 0 || tvSearchResults.length > 0" class="auto-complete-results">
     <ul>
       <li *ngFor="let item of movieSearchResults" (click)="selectItem(item)">
@@ -12,7 +12,7 @@
   </div>
 
   <div *ngIf="selectedItem" class="selected-item">
-      <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{selectedItem.posterPath}}" />
+      <img src="https://image.tmdb.org/t/p/w650_and_h365_bestv2{{selectedItem.backdropPath}}" />
       {{selectedItem.title}}
       {{selectedItem.date}}
   </div>

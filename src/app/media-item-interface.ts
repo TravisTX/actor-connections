@@ -3,5 +3,5 @@ export interface IMediaItem {
     id: number;
     title: string;
     date: string;
-    posterPath: string;
+    backdropPath: string;
 }

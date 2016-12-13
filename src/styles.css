@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
     background-color: #444;
     color: #eee;
@@ -15,6 +21,11 @@ input[type=text] {
     font-size: 1.5em;
 }
 
+h1 {
+    margin: 0;
+    font-weight: normal;
+}
+
 .comparison {
     display: flex;
 }
@@ -24,7 +35,7 @@ input[type=text] {
     padding: 10px;
     margin: 10px;
     width: 33%;
-    border: 1px solid #eee;
+    background-color: #333;
 }
 
 .auto-complete-results {
@@ -47,8 +58,7 @@ input[type=text] {
     background-color: #111;
     padding: 10px;
     font-weight: bold;
-    max-width: 300px;
-    margin: 5px auto;
+    margin: 5px 0;
 }
 
 .selected-item img {
@@ -56,6 +66,18 @@ input[type=text] {
     max-width: 100%;
     border: 2px solid #eee;
     margin-bottom: 5px;
-    
+}
 
+.person {
+    width: 132px;
+    margin: 5px;
+    float: left;
+    text-align: center;
+}
+
+.person img {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    border: 2px solid #eee;
 }

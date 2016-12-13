@@ -22,7 +22,7 @@ export class MoviedbService {
             id: y.id,
             title: y.title,
             date: y.release_date,
-            posterPath: y.poster_path
+            backdropPath: y.backdrop_path
           };
           results.push(result);
         });
@@ -42,7 +42,7 @@ export class MoviedbService {
             id: y.id,
             title: y.name,
             date: y.first_air_date,
-            posterPath: y.poster_path
+            backdropPath: y.backdrop_path
           };
           results.push(result);
         });

@@ -1,23 +1,23 @@
 <div class="comparison">
-  <div class="colA">
+  <div>
     <movie-selector (onSelected)="selectMovie('a', $event)"></movie-selector>
 
     <div *ngFor="let cast of aMovieOnlyCast">
-      {{ cast.name }}
+      <person [person]="cast"></person>
     </div>
     
   </div>
-  <div class="colB">
-    Actors in Common
+  <div>
+    <h1>Actors in Common</h1>
 
     <div *ngFor="let cast of sharedCast">
-      {{ cast.name }}
+      <person [person]="cast"></person>
     </div>
   </div>
-  <div class="colC">
+  <div>
     <movie-selector (onSelected)="selectMovie('b', $event)"></movie-selector>
-    <div *ngFor="let cast of bMovieOnlyCast">
-      {{ cast.name }}
+    <div *ngFor="let cast of bMovieOnlyCast" class="cast">
+      <person [person]="cast"></person>
     </div>
   </div>
 </div>
