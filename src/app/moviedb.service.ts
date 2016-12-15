@@ -9,6 +9,15 @@ export class MoviedbService {
   constructor(private http: Http) { }
   apiKey: string = 'xxx';
 
+  getMedia(type: string, id: number): Observable<IMediaItem> {
+    if (type === 'movie') {
+      return this.getMovie(id);
+    }
+    else {
+      return this.getTv(id);
+    }
+  }
+
   searchForMovie(searchTerm: string): Observable<IMediaItem[]> {
     var url = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&include_adult=false`;
 
@@ -17,14 +26,7 @@ export class MoviedbService {
       .map((x: Array<any>) => {
         let results: IMediaItem[] = [];
         x.forEach(y => {
-          var result: IMediaItem = {
-            mediaType: 'movie',
-            id: y.id,
-            title: y.title,
-            date: y.release_date,
-            backdropPath: y.backdrop_path
-          };
-          results.push(result);
+          results.push(this.convertMovieToMedia(y));
         });
         return results;
       });
@@ -37,33 +39,66 @@ export class MoviedbService {
       .map((x: Array<any>) => {
         let results: IMediaItem[] = [];
         x.forEach(y => {
-          var result: IMediaItem = {
-            mediaType: 'tv',
-            id: y.id,
-            title: y.name,
-            date: y.first_air_date,
-            backdropPath: y.backdrop_path
-          };
-          results.push(result);
+          results.push(this.convertTvToMedia(y));
         });
         return results;
       });
   }
 
-  getCredits(item: IMediaItem) {
-    if (item.mediaType === 'movie') {
-      return this.getMovieCredits(item.id);
+  getCredits(mediaType: string, id: number) {
+    if (mediaType === 'movie') {
+      return this.getMovieCredits(id);
     }
     else {
-      return this.getTvCredits(item.id);
+      return this.getTvCredits(id);
     }
   }
 
-  getMovieCredits(movieId: number): any {
+  private convertMovieToMedia(movie: any): IMediaItem {
+    var result: IMediaItem = {
+      mediaType: 'movie',
+      id: movie.id,
+      title: movie.title,
+      date: movie.release_date,
+      backdropPath: movie.backdrop_path
+    };
+    return result;
+  }
+
+  private convertTvToMedia(tv: any): IMediaItem {
+    var result: IMediaItem = {
+      mediaType: 'tv',
+      id: tv.id,
+      title: tv.name,
+      date: tv.first_air_date,
+      backdropPath: tv.backdrop_path
+    };
+    return result;
+  }
+
+  private getMovie(id: number): Observable<IMediaItem> {
+    var url = `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}`;
+    return this.http.get(url)
+      .map((response: Response) => response.json())
+      .map((x: any) => {
+        return this.convertMovieToMedia(x);
+      });
+  }
+
+  private getTv(id: number): Observable<IMediaItem> {
+    var url = `https://api.themoviedb.org/3/tv/${id}?api_key=${this.apiKey}`;
+    return this.http.get(url)
+      .map((response: Response) => response.json())
+      .map((x: any) => {
+        return this.convertTvToMedia(x);
+      });
+  }
+
+  private getMovieCredits(movieId: number): any {
     return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${this.apiKey}`);
   }
 
-  getTvCredits(tvId: number): any {
+  private getTvCredits(tvId: number): any {
     return this.http.get(`https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${this.apiKey}`);
   }
 }
