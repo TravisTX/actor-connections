@@ -19,8 +19,7 @@ export class MediaSelectorComponent implements OnInit {
   query = '';
   queryChanged: Subject<string> = new Subject<string>();
 
-  movieSearchResults = [];
-  tvSearchResults = [];
+  mediaSearchResults = [];
 
   ngOnInit() {
     this.queryChanged
@@ -35,22 +34,16 @@ export class MediaSelectorComponent implements OnInit {
     if (text.length === 0) {
       return;
     }
-    this.moviedbService.searchForMovie(text).subscribe(
+    this.moviedbService.searchForMedia(text).subscribe(
       data => {
-        this.movieSearchResults = data;
-      }
-    )
-    this.moviedbService.searchForTv(text).subscribe(
-      data => {
-        this.tvSearchResults = data;
+        this.mediaSearchResults = data;
       }
     )
   }
 
   selectItem(item): void {
     this.selectedItem = item;
-    this.movieSearchResults.length = 0;
-    this.tvSearchResults.length = 0;
+    this.mediaSearchResults.length = 0;
     this.query = '';
     this.onSelected.emit(item);
   }

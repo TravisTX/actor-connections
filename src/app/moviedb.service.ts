@@ -18,28 +18,20 @@ export class MoviedbService {
     }
   }
 
-  searchForMovie(searchTerm: string): Observable<IMediaItem[]> {
-    var url = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&include_adult=false`;
+  searchForMedia(searchTerm: string): Observable<IMediaItem[]> {
+    var url = `https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&include_adult=false`;
 
     return this.http.get(url)
       .map((response: Response) => response.json().results)
       .map((x: Array<any>) => {
-        let results: IMediaItem[] = [];
-        x.forEach(y => {
-          results.push(this.convertMovieToMedia(y));
+        return x.filter(y => {
+          return y.media_type === 'movie' || y.media_type === 'tv';
         });
-        return results;
-      });
-  }
-
-  searchForTv(searchTerm: string): Observable<IMediaItem[]> {
-    var url = `https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&language=en-US&query=${searchTerm}`;
-    return this.http.get(url)
-      .map((response: Response) => response.json().results)
+      })
       .map((x: Array<any>) => {
         let results: IMediaItem[] = [];
         x.forEach(y => {
-          results.push(this.convertTvToMedia(y));
+          results.push(this.convertToIMediaItem(y));
         });
         return results;
       });
@@ -54,24 +46,13 @@ export class MoviedbService {
     }
   }
 
-  private convertMovieToMedia(movie: any): IMediaItem {
+  private convertToIMediaItem(movieDbItem: any): IMediaItem {
     var result: IMediaItem = {
-      mediaType: 'movie',
-      id: movie.id,
-      title: movie.title,
-      date: movie.release_date,
-      backdropPath: movie.backdrop_path
-    };
-    return result;
-  }
-
-  private convertTvToMedia(tv: any): IMediaItem {
-    var result: IMediaItem = {
-      mediaType: 'tv',
-      id: tv.id,
-      title: tv.name,
-      date: tv.first_air_date,
-      backdropPath: tv.backdrop_path
+      mediaType: movieDbItem.media_type,
+      id: movieDbItem.id,
+      title: movieDbItem.title || movieDbItem.name,
+      date: movieDbItem.release_date || movieDbItem.first_air_date,
+      backdropPath: movieDbItem.backdrop_path
     };
     return result;
   }
@@ -81,7 +62,8 @@ export class MoviedbService {
     return this.http.get(url)
       .map((response: Response) => response.json())
       .map((x: any) => {
-        return this.convertMovieToMedia(x);
+        x.media_type = 'movie';
+        return this.convertToIMediaItem(x);
       });
   }
 
@@ -90,7 +72,8 @@ export class MoviedbService {
     return this.http.get(url)
       .map((response: Response) => response.json())
       .map((x: any) => {
-        return this.convertTvToMedia(x);
+        x.media_type = 'tv';
+        return this.convertToIMediaItem(x);
       });
   }
 

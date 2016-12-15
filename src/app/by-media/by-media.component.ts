@@ -75,12 +75,11 @@ export class ByMediaComponent implements OnInit {
       data => {
         if (mediaSlot === 'a') {
           this.aMediaAllCast = data.json().cast;
-          this.updateCast();
         }
         else {
           this.bMediaAllCast = data.json().cast;
-          this.updateCast();
         }
+        this.updateCast();
       }
     );
   }
