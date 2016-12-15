@@ -7,11 +7,11 @@ import { IMediaItem } from '../media-item-interface';
 
 
 @Component({
-  selector: 'by-title',
-  templateUrl: './by-title.component.html',
-  styleUrls: ['./by-title.component.css']
+  selector: 'by-media',
+  templateUrl: './by-media.component.html',
+  styleUrls: ['./by-media.component.css']
 })
-export class ByTitleComponent implements OnInit {
+export class ByMediaComponent implements OnInit {
   constructor(
     private moviedbService: MoviedbService,
     private route: ActivatedRoute,

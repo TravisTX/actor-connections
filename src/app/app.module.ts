@@ -6,15 +6,15 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MoviedbService } from './moviedb.service';
-import { MovieSelectorComponent } from './movie-selector/movie-selector.component';
-import { ByTitleComponent } from './by-title/by-title.component';
+import { MediaSelectorComponent } from './media-selector/media-selector.component';
+import { ByMediaComponent } from './by-media/by-media.component';
 import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieSelectorComponent,
-    ByTitleComponent,
+    MediaSelectorComponent,
+    ByMediaComponent,
     PersonComponent
   ],
   imports: [
@@ -29,7 +29,7 @@ import { PersonComponent } from './person/person.component';
       },
       {
         path: 'by-media',
-        component: ByTitleComponent
+        component: ByMediaComponent
       }
     ])
 

@@ -2,7 +2,7 @@
 
 <div class="comparison">
   <div>
-    <movie-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)"></movie-selector>
+    <media-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)"></media-selector>
 
     <div *ngFor="let cast of aMediaOnlyCast">
       <person [person]="cast"></person>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div>
-    <movie-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)"></movie-selector>
+    <media-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)"></media-selector>
     <div *ngFor="let cast of bMediaOnlyCast" class="cast">
       <person [person]="cast"></person>
     </div>

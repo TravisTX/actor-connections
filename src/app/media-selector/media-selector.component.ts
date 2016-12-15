@@ -5,11 +5,11 @@ import { MoviedbService } from '../moviedb.service';
 
 
 @Component({
-  selector: 'movie-selector',
-  templateUrl: './movie-selector.component.html',
-  styleUrls: ['./movie-selector.component.css']
+  selector: 'media-selector',
+  templateUrl: './media-selector.component.html',
+  styleUrls: ['./media-selector.component.css']
 })
-export class MovieSelectorComponent implements OnInit {
+export class MediaSelectorComponent implements OnInit {
   constructor(private moviedbService: MoviedbService) { }
 
   @Input()
