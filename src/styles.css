@@ -29,12 +29,16 @@ input[type=text] {
 }
 
 h1 {
-    margin: 10px;
+    margin: 0;
     font-weight: normal;
 }
 h2 {
     margin: 0;
     font-weight: normal;
+}
+
+.header {
+    margin: 0 1vw 1vw;
 }
 
 .comparison {
@@ -137,5 +141,5 @@ h2 {
 }
 
 .footer {
-    margin: 10px;
+    margin: 1vw;
 }

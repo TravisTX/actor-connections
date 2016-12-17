@@ -9,13 +9,15 @@ import { MoviedbService } from './moviedb.service';
 import { MediaSelectorComponent } from './media-selector/media-selector.component';
 import { ByMediaComponent } from './by-media/by-media.component';
 import { PersonComponent } from './person/person.component';
+import { ByActorComponent } from './by-actor/by-actor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MediaSelectorComponent,
     ByMediaComponent,
-    PersonComponent
+    PersonComponent,
+    ByActorComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,10 @@ import { PersonComponent } from './person/person.component';
       {
         path: 'by-media',
         component: ByMediaComponent
+      },
+      {
+        path: 'by-actor',
+        component: ByActorComponent
       }
     ])
 

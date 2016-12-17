@@ -7,7 +7,7 @@ import { IMediaItem } from './media-item-interface';
 @Injectable()
 export class MoviedbService {
   constructor(private http: Http) { }
-  apiKey: string = 'xxx';
+  apiKey: string = '57b3da7727ff12da1306508b6d09c419';
 
   getMedia(type: string, id: number): Observable<IMediaItem> {
     if (type === 'movie') {
