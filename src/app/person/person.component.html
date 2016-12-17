@@ -1,6 +1,7 @@
 <div class="person">
   <div class="image">
     <img *ngIf="person.profile_path" src="https://image.tmdb.org/t/p/w132_and_h132_bestv2/{{person.profile_path}}" />
+    <img *ngIf="!person.profile_path" src="../../assets/missing-person.png" />
   </div>
   {{ person.name }}
 </div>

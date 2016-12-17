@@ -11,7 +11,7 @@
   </div>
 
   <div *ngIf="selectedItem" class="selected-item">
-    <img *ngIf="selectedItem.backdropPath" src="https://image.tmdb.org/t/p/w650_and_h365_bestv2{{selectedItem.backdropPath}}" />
+    <img *ngIf="selectedItem.posterPath" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{selectedItem.posterPath}}" />
     {{selectedItem.title}} {{selectedItem.date}}
   </div>
 </div>

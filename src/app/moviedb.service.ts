@@ -52,7 +52,8 @@ export class MoviedbService {
       id: movieDbItem.id,
       title: movieDbItem.title || movieDbItem.name,
       date: movieDbItem.release_date || movieDbItem.first_air_date,
-      backdropPath: movieDbItem.backdrop_path
+      backdropPath: movieDbItem.backdrop_path,
+      posterPath: movieDbItem.poster_path,
     };
     return result;
   }
