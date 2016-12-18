@@ -1,0 +1,19 @@
+<div>
+  <div class="auto-complete">
+    Actor's Name<br>
+    <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" [placeholder]="placeholder" />
+    <div *ngIf="actorSearchResults.length > 0" class="auto-complete-results">
+      <ul>
+        <li *ngFor="let item of actorSearchResults" (click)="selectItem(item)">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="selectedItem" class="selected-actor">
+    <div class="image">
+      <img *ngIf="selectedItem.profile_path" src="https://image.tmdb.org/t/p/w185{{selectedItem.profile_path}}"/>
+    </div>
+    {{selectedItem.name}} {{selectedItem.date}}
+  </div>
+</div>

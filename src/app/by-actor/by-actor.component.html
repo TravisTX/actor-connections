@@ -1,3 +1,37 @@
-<p>
-  by-actor works!
-</p>
+<div class="by-actor-component">
+  <div class="comparison">
+    <div class="column">
+      <actor-selector [selectedItem]="aActor" (onSelected)="onSelectActor('a', $event.id)" placeholder="ex: Ben Affleck"></actor-selector>
+    </div>
+    <div class="column">
+      <h2>Media in Common</h2>
+      <div *ngIf="aActor && bActor">
+      Titles that both {{aActor.name}} and {{bActor.name}}
+      have appeared in
+    </div>
+    </div>
+    <div class="column">
+      <actor-selector [selectedItem]="bActor" (onSelected)="onSelectActor('b', $event.id)" placeholder="ex: Matt Damon"></actor-selector>
+    </div>
+  </div>
+
+  <div class="comparison">
+    <div class="column media-list">
+      <div *ngFor="let item of aActorOnlyMedia" class="cell">
+        <media-item [item]="item"></media-item>
+      </div>
+    </div>
+
+    <div class="column media-list">
+      <div *ngFor="let item of sharedMedia" class="cell">
+        <media-item [item]="item"></media-item>
+      </div>
+    </div>
+
+    <div class="column media-list">
+      <div *ngFor="let item of bActorOnlyMedia" class="cell">
+        <media-item [item]="item"></media-item>
+      </div>
+    </div>
+  </div>
+</div>

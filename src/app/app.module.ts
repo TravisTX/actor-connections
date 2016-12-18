@@ -10,6 +10,8 @@ import { MediaSelectorComponent } from './media-selector/media-selector.componen
 import { ByMediaComponent } from './by-media/by-media.component';
 import { PersonComponent } from './person/person.component';
 import { ByActorComponent } from './by-actor/by-actor.component';
+import { ActorSelectorComponent } from './actor-selector/actor-selector.component';
+import { MediaItemComponent } from './media-item/media-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ByActorComponent } from './by-actor/by-actor.component';
     MediaSelectorComponent,
     ByMediaComponent,
     PersonComponent,
-    ByActorComponent
+    ByActorComponent,
+    ActorSelectorComponent,
+    MediaItemComponent
   ],
   imports: [
     BrowserModule,

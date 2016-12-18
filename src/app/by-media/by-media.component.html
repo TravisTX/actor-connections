@@ -1,34 +1,36 @@
-<div class="comparison">
-  <div class="column">
-    <media-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)"></media-selector>
-  </div>
-  <div class="column">
-    <h2>Actors in Common</h2>
-    <div *ngIf="aMedia && bMedia">
-      Actors in both {{aMedia.title}} and {{bMedia.title}}
+<div class="by-media-component">
+  <div class="comparison">
+    <div class="column">
+      <media-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)"></media-selector>
+    </div>
+    <div class="column">
+      <h2>Actors in Common</h2>
+      <div *ngIf="aMedia && bMedia">
+        Actors in both {{aMedia.title}} and {{bMedia.title}}
       </div>
-  </div>
-  <div class="column">
-    <media-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)"></media-selector>
-  </div>
-</div>
-
-<div class="comparison">
-  <div class="column person-list">
-    <div *ngFor="let cast of aMediaOnlyCast" class="cell">
-      <person [person]="cast"></person>
+    </div>
+    <div class="column">
+      <media-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)"></media-selector>
     </div>
   </div>
 
-  <div class="column person-list">
-    <div *ngFor="let cast of sharedCast" class="cell">
-      <person [person]="cast"></person>
+  <div class="comparison">
+    <div class="column person-list">
+      <div *ngFor="let cast of aMediaOnlyCast" class="cell">
+        <person [person]="cast"></person>
+      </div>
     </div>
-  </div>
 
-  <div class="column person-list">
-    <div *ngFor="let cast of bMediaOnlyCast" class="cell">
-      <person [person]="cast"></person>
+    <div class="column person-list">
+      <div *ngFor="let cast of sharedCast" class="cell">
+        <person [person]="cast"></person>
+      </div>
+    </div>
+
+    <div class="column person-list">
+      <div *ngFor="let cast of bMediaOnlyCast" class="cell">
+        <person [person]="cast"></person>
+      </div>
     </div>
   </div>
 </div>

@@ -18,6 +18,18 @@ export class MoviedbService {
     }
   }
 
+  getActor(id: number): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/person/${id}?api_key=${this.apiKey}`)
+      .map((response: Response) => response.json());
+  }
+
+  searchForActor(searchTerm: string): Observable<any[]> {
+    var url = `https://api.themoviedb.org/3/search/person?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
+
+    return this.http.get(url)
+      .map((response: Response) => response.json().results)
+  }
+
   searchForMedia(searchTerm: string): Observable<IMediaItem[]> {
     var url = `https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&language=en-US&query=${searchTerm}&include_adult=false`;
 
@@ -44,6 +56,13 @@ export class MoviedbService {
     else {
       return this.getTvCredits(id);
     }
+  }
+
+  getActorCredits(actorId: number): Observable<any[]> {
+    var url = `https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${this.apiKey}&language=en-US`;
+
+    return this.http.get(url)
+      .map((response: Response) => response.json().cast)
   }
 
   private convertToIMediaItem(movieDbItem: any): IMediaItem {

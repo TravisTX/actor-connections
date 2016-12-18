@@ -1,0 +1,7 @@
+<div class="media-item">
+  <div class="image">
+    <img *ngIf="item.poster_path" src="https://image.tmdb.org/t/p/w150{{item.poster_path}}" />
+    <img *ngIf="!item.poster_path" src="../../assets/missing-person.png" />
+  </div>
+  {{ item.title || item.name }}
+</div>
