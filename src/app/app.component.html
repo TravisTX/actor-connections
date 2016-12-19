@@ -1,12 +1,13 @@
 <div class="header">
     <h1>Actor Connections</h1>
-    <a routerLink="/by-media">By Media</a>
-    <a routerLink="/by-actor">By Actor</a>
+    <ul class="clearfix">
+        <li><a routerLink="/by-media" routerLinkActive="active">By Media</a></li>
+        <li><a routerLink="/by-actor" routerLinkActive="active">By Actor</a></li>
+    </ul>
 </div>
 <router-outlet></router-outlet>
 
 
 <div class="footer">
-    <a href="https://twitter.com/hamburger_menu">@hamburger_menu</a><br>
-    This product uses the <a href="https://themoviedb.org">TMDb</a> API but is not endorsed or certified by TMDb
+    <a href="https://twitter.com/hamburger_menu">@hamburger_menu</a><br> This product uses the <a href="https://themoviedb.org">TMDb</a>    API but is not endorsed or certified by TMDb
 </div>
