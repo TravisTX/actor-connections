@@ -1,19 +1,30 @@
-<div>
-  <div class="auto-complete">
-    Actor's Name<br>
-    <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" [placeholder]="placeholder" />
-    <div *ngIf="actorSearchResults.length > 0" class="auto-complete-results">
-      <ul>
+<div class="actor-selector-component">
+  <a (click)="doShowPopup()">Select Actor...</a>
+  <div *ngIf="selectedItem" class="selected-actor">
+    <div class="image">
+      <img *ngIf="selectedItem.profile_path" src="https://image.tmdb.org/t/p/w185{{selectedItem.profile_path}}" />
+    </div>
+    {{selectedItem.name}} {{selectedItem.date}}
+  </div>
+
+  <div class="selector-popup" [class.active]="showPopup">
+    <div class="selector-popup-header">
+      Find an Actor
+      <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" [placeholder]="placeholder" [focus]="searchFocusEventEmitter"
+      />
+    </div>
+
+    <div class="selector-popup-results">
+      <ul *ngIf="actorSearchResults.length > 0">
         <li *ngFor="let item of actorSearchResults" (click)="selectItem(item)">
           {{item.name}}
         </li>
       </ul>
     </div>
-  </div>
-  <div *ngIf="selectedItem" class="selected-actor">
-    <div class="image">
-      <img *ngIf="selectedItem.profile_path" src="https://image.tmdb.org/t/p/w185{{selectedItem.profile_path}}"/>
+
+    <div class="selector-popup-footer">
+      <input type="button" value="Cancel" (click)="doHidePopup()" />
     </div>
-    {{selectedItem.name}} {{selectedItem.date}}
   </div>
+
 </div>

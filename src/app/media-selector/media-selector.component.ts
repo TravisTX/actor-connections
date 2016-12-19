@@ -13,9 +13,9 @@ export class MediaSelectorComponent implements OnInit {
   constructor(private moviedbService: MoviedbService) { }
 
   @Input()
-  selectedItem = undefined;
-  @Input()
   placeholder = '';
+  @Input()
+  selectedItem = undefined;
   @Output()
   onSelected = new EventEmitter<boolean>();
   query = '';
@@ -49,11 +49,8 @@ export class MediaSelectorComponent implements OnInit {
     document.getElementsByTagName("body")[0].classList.add("popup-open");
     this.showPopup = true;
     setTimeout(() => {
-      console.log('focus');
       this.searchFocusEventEmitter.emit(true);
     }, 0);
-
-
   }
 
   doHidePopup(): void {

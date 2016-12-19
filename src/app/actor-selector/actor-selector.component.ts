@@ -20,6 +20,8 @@ export class ActorSelectorComponent implements OnInit {
   onSelected = new EventEmitter<boolean>();
   query = '';
   queryChanged: Subject<string> = new Subject<string>();
+  showPopup = false;
+  public searchFocusEventEmitter = new EventEmitter<boolean>();
 
   actorSearchResults = [];
 
@@ -43,7 +45,21 @@ export class ActorSelectorComponent implements OnInit {
     )
   }
 
+  doShowPopup(): void {
+    document.getElementsByTagName("body")[0].classList.add("popup-open");
+    this.showPopup = true;
+    setTimeout(() => {
+      this.searchFocusEventEmitter.emit(true);
+    }, 0);
+  }
+
+  doHidePopup(): void {
+    document.getElementsByTagName("body")[0].classList.remove("popup-open");
+    this.showPopup = false;
+  }
+
   selectItem(item): void {
+    this.doHidePopup();
     this.selectedItem = item;
     this.actorSearchResults.length = 0;
     this.query = '';
