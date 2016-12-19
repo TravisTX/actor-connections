@@ -14,10 +14,14 @@ export class MediaSelectorComponent implements OnInit {
 
   @Input()
   selectedItem = undefined;
+  @Input()
+  placeholder = '';
   @Output()
   onSelected = new EventEmitter<boolean>();
   query = '';
   queryChanged: Subject<string> = new Subject<string>();
+  showPopup = false;
+  public searchFocusEventEmitter = new EventEmitter<boolean>();
 
   mediaSearchResults = [];
 
@@ -41,7 +45,24 @@ export class MediaSelectorComponent implements OnInit {
     )
   }
 
+  doShowPopup(): void {
+    document.getElementsByTagName("body")[0].classList.add("popup-open");
+    this.showPopup = true;
+    setTimeout(() => {
+      console.log('focus');
+      this.searchFocusEventEmitter.emit(true);
+    }, 0);
+
+
+  }
+
+  doHidePopup(): void {
+    document.getElementsByTagName("body")[0].classList.remove("popup-open");
+    this.showPopup = false;
+  }
+
   selectItem(item): void {
+    this.doHidePopup();
     this.selectedItem = item;
     this.mediaSearchResults.length = 0;
     this.query = '';

@@ -13,8 +13,14 @@ body {
     margin: 0;
 }
 
+body.popup-open {
+    overflow: hidden;
+}
+
 a {
     color: #c07be2;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 ul, ol, li {
@@ -115,41 +121,65 @@ h2 {
 }
 
 
-
-.auto-complete {
-    position: relative;
+.selector-popup {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #111;
+    padding: 10px;
 }
 
-.auto-complete-results {
-    position: absolute;
-    width: 100%;
+.selector-popup.active {
+    display: flex;
+}
+
+.selector-popup-header {
+
+}
+
+.selector-popup > dev {
+
+}
+
+.selector-popup-footer {
+    height: 35px;
+    padding: 5px 0;
+}
+
+.selector-popup-results {
+    flex-grow: 1;
+    overflow-y: auto;
     background-color: #555;
 }
 
-.auto-complete-results li {
+.selector-popup-results li {
     padding: 5px;
     cursor: pointer;
     overflow-x: hidden;
 }
 
-.auto-complete-results li:hover {
+.selector-popup-results li:hover {
     background-color: #666;
 }
 
-.auto-complete-results .label {
+.selector-popup-results .label {
     background-color: #111;
     padding: 2px 5px;
     border-radius: 5px;
 }
 
-.auto-complete-results .selected-item {
+.selector-popup-results .selected-item {
     background-color: #111;
     padding: 10px;
     font-weight: bold;
     margin: 5px 0;
 }
 
-.auto-complete-results .selected-item img {
+.selector-popup-results .selected-item img {
     display: block;
     max-width: 100%;
     border: 2px solid #eee;
@@ -210,3 +240,4 @@ actor-selector {
         height: 225px;
     }
 }
+

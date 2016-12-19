@@ -1,7 +1,7 @@
 <div class="by-media-component">
   <div class="comparison">
     <div class="column">
-      <media-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)"></media-selector>
+      <media-selector [selectedItem]="aMedia" (onSelected)="onSelectMedia('a', $event.mediaType, $event.id)" placeholder="ex: Unbreakable"></media-selector>
     </div>
     <div class="column">
       <h2>Actors in Common</h2>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="column">
-      <media-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)"></media-selector>
+      <media-selector [selectedItem]="bMedia" (onSelected)="onSelectMedia('b', $event.mediaType, $event.id)" placeholder="ex: Pulp Fiction"></media-selector>
     </div>
   </div>
 

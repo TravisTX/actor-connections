@@ -12,6 +12,7 @@ import { PersonComponent } from './person/person.component';
 import { ByActorComponent } from './by-actor/by-actor.component';
 import { ActorSelectorComponent } from './actor-selector/actor-selector.component';
 import { MediaItemComponent } from './media-item/media-item.component';
+import { FocusDirective } from './focus.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MediaItemComponent } from './media-item/media-item.component';
     PersonComponent,
     ByActorComponent,
     ActorSelectorComponent,
-    MediaItemComponent
+    MediaItemComponent,
+    FocusDirective
   ],
   imports: [
     BrowserModule,

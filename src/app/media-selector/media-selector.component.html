@@ -1,19 +1,28 @@
-<div>
-  <div class="auto-complete">
-    <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" placeholder="Movie / Tv Search..." />
-    <div *ngIf="mediaSearchResults.length > 0" class="auto-complete-results">
-      <ul>
-        <li *ngFor="let item of mediaSearchResults" (click)="selectItem(item)">
-          {{item.title}} {{item.date}} <span class="label">{{item.mediaType}}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-
+<div class="media-selector-component">
+  <a (click)="doShowPopup()">Select Media...</a>
   <div *ngIf="selectedItem" class="selected-item">
     <div class="image">
       <img *ngIf="selectedItem.posterPath" src="https://image.tmdb.org/t/p/w342{{selectedItem.posterPath}}" />
     </div>
     {{selectedItem.title}} {{selectedItem.date}}
+  </div>
+
+  <div class="selector-popup" [class.active]="showPopup">
+    <div class="selector-popup-header">
+      Find a Movie or Tv Show
+      <input type="text" [ngModel]="query" (ngModelChange)="queryChanged.next($event)" [placeholder]="placeholder" [focus]="searchFocusEventEmitter" />
+    </div>
+
+    <div class="selector-popup-results">
+      <ul *ngIf="mediaSearchResults.length > 0">
+        <li *ngFor="let item of mediaSearchResults" (click)="selectItem(item)">
+          {{item.title}} {{item.date}} <span class="label">{{item.mediaType}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="selector-popup-footer">
+      <input type="button" value="Cancel" (click)="doHidePopup()" />
+    </div>
   </div>
 </div>
